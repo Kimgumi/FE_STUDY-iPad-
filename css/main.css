@@ -54,27 +54,14 @@ header .basket {
   top: calc(100% + 5px); right: -6px;
   overflow: hidden;
 }
-header .basket .arrow {
-  width: 20px; height: 20px; 
-  position: absolute;
-  top: -10px; right: 12px;
-  z-index: 5;
-  border: 1px solid #d2d2d2;
-}
-header .basket .arrow::before {
-  /* content: "";
-  width: 12px; height: 12px;
-  border: 1px solid #d2d2d2;
-  background-color: #fff;
-  transform: rotate(45deg);
-  transform-origin: 0 0; /* 회전 기준점 설정 */
-  /* position: absolute;
-  top: 0; right: 50%; */ */
-}
+head .basket .arrow {}
+
 header .basket .message {
 
 }
 header .basket ul {
 
 }
-header .basket ul li {}
+header .basket ul li {
+
+}
