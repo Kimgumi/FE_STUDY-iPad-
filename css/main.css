@@ -1,0 +1,40 @@
+body {
+  font-size: 16px;
+  line-height: 1;
+  font-family: "Roboto", "Noto Sans KR", sans-serif; /* 적용 순서 */
+  word-break: keep-all; /* 단어가 오버플로우 시 줄바꿈 처리를 어떻게 할 것인가 */
+}
+a {text-decoration: none; /* 링크 밑줄 제거 */}
+
+/* Header */
+header {background-color: #3a3a3a;}
+header .inner {
+  max-width: 1020px;
+  margin: 0 auto; /* 가운데 정렬 */
+}
+header ul.menu {
+  height: 44px; /* 메뉴 높이 */
+  display: flex; 
+  justify-content: space-between; /* 메뉴 아이템 사이에 공간을 균등하게 배치 */
+}
+header ul.menu li {display: flex; /* 메뉴 아이템을 flexbox로 설정 */}
+header ul.menu li a {
+  padding: 0 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  opacity: .8; /* 투명도 */
+}
+header ul.menu li.apple-logo a,
+header ul.menu li.search-starter a, 
+header ul.menu li.basket-starter a { 
+  width: 14px;
+  text-indent: -9999px; /* 텍스트를 화면 밖으로 이동시켜 안 보이게 만든다(대체 텍스트 처리) */
+  background-repeat: no-repeat;
+  background-position: center 13px;
+}
+header ul.menu li.apple-logo a {background-image: url(../images/header_apple.svg);}
+header ul.menu li.search-starter a {background-image: url(../images/header_search.svg);}
+header ul.menu li.basket-starter a {background-image: url(../images/header_bag.svg);}
+header ul.menu li a:hover {opacity: 1; /* 호버 시 투명도 변경 */}
