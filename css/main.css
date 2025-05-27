@@ -52,16 +52,49 @@ header .basket {
   background-color: #fff;
   position: absolute; /* 메뉴가 다른 요소 위에 표시되도록 설정 */
   top: calc(100% + 5px); right: -6px;
+
+  visibility: hidden; /* 기본적으로 보이지 않도록 설정 */
+  transition: .4s;
+  opacity: 0;  
+}
+header .basket.show {
+  visibility: visible; /* show 클래스가 추가되면 보이도록 설정 */
+  opacity: 1;
+}
+header .basket .arrow {
+  width: 20px; height: 10px;
   overflow: hidden;
+  position: absolute;
+  top: -10px; right: 12px;
 }
-head .basket .arrow {}
-
+header .basket .arrow::before {
+  content: "";
+  width: 12px; height: 20px;
+  background-color: #fff;
+  border: 1px solid #d2d2d2;
+  position: absolute;
+  top: 1px; right: -30%;
+  transform: rotate(45deg);
+  transform-origin: 0 0; /* 회전 기준점 설정 */;
+}
 header .basket .message {
-
+  padding: 30px 0; /* 상하 좌우 */
+  font-size: 13px;
+  color: #6e6e6e;
+  text-align: center;
 }
-header .basket ul {
-
+header .basket ul { 
+  margin-top: 10px;
 }
 header .basket ul li {
-
+  border-top: 1px solid #d2d2d2;
+}
+header .basket ul li a {
+  display: block;
+  padding: 14px;
+  font-size: 13px;
+  color: #0071e3;
+}
+header .basket ul li a:hover {
+  text-decoration: underline;
 }
