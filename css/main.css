@@ -1,16 +1,19 @@
 body {
+  height: 5000px; /* 스크롤 테스트를 위한 높이 */
   font-size: 16px;
   line-height: 1;
   font-family: "Roboto", "Noto Sans KR", sans-serif; /* 적용 순서 */
   word-break: keep-all; /* 단어가 오버플로우 시 줄바꿈 처리를 어떻게 할 것인가 */
+  color: #1d1d1d; /* 기본 글자색 */
 }
-a {text-decoration: none; /* 링크 밑줄 제거 */}
+a {color: #1d1d1d; text-decoration: none; /* 링크 밑줄 제거 */}
 
 /* Header */
 header {background-color: #3a3a3a;}
 header .inner {
   max-width: 1020px;
   margin: 0 auto; /* 가운데 정렬 */
+  position: relative; /* 자식 요소의 절대 위치 설정을 위한 기준 */
 }
 header ul.menu {
   height: 44px; /* 메뉴 높이 */
@@ -52,17 +55,20 @@ header .basket {
   background-color: #fff;
   position: absolute; /* 메뉴가 다른 요소 위에 표시되도록 설정 */
   top: calc(100% + 5px); right: -6px;
-
-  display: none; /* 기본적으로 숨김 */
+  
+  visibility: hidden; /* 기본적으로 보이지 않도록 설정 */
+  transition: .4s;
+  opacity: 0;  
 }
-header .basket.show{
-  display: block; /* show 클래스가 추가되면 표시 */
+header .basket.show {
+  visibility: visible; /* show 클래스가 추가되면 보이도록 설정 */
+  opacity: 1;
 }
 header .basket .arrow {
   width: 20px; height: 10px;
   overflow: hidden;
   position: absolute;
-  top: -10px; right: 12px;
+  top: -9px; right: 12px;
 }
 header .basket .arrow::before {
   content: "";
@@ -80,18 +86,93 @@ header .basket .message {
   color: #6e6e6e;
   text-align: center;
 }
-header .basket ul { 
-  margin-top: 10px;
-}
-header .basket ul li {
-  border-top: 1px solid #d2d2d2;
-}
+header .basket ul { margin-top: 10px;}
+header .basket ul li {border-top: 1px solid #d2d2d2;}
 header .basket ul li a {
   display: block;
   padding: 14px;
   font-size: 13px;
   color: #0071e3;
 }
-header .basket ul li a:hover {
-  text-decoration: underline;
+header .basket ul li a:hover {text-decoration: underline;}
+
+/* Header - Menu(Search) */
+header .search-wrap {
+  position:absolute; top:0; left: 0;
+  width: 100%; 
+  display: none;
+}
+header .search {
+  max-width: 680px;
+  margin: 0 auto; /* 가운데 정렬 */
+  position: relative;
+}
+header .search .shadow {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, .2); 
+}
+header .search .textfield {
+  position: relative;
+}
+header .search input {
+  width: 100%; height: 44px;
+  padding: 0 40px;
+  border: none; outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 17px;  
+  color: #fff;
+}
+header .search .search-icon {
+  width: 40px; height: 44px;
+  background-image: url("../images/header_search.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute; top: 0; left: 0;
+  opacity: .5;
+}
+header .search .search-closer {
+  width: 40px; height: 44px;
+  background-image: url("../images/header_close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute; top: 0; right: 0;
+  opacity: .5;
+  cursor: pointer; /* 클릭 가능 커서 */
+}
+header .search .search-closer:hover {opacity: 1;}
+header .search .autocompletes {
+  width: 100%;
+  background-color: #fff;
+  padding: 26px 40px 20px; /* 상 좌우 하 */
+  border-radius: 0 0 18px 18px;
+  box-sizing: border-box;
+  position: absolute; top: 44px; left:0;
+}
+header .search .autocompletes h3 {
+  font-size: 12px;
+  color: #6e6e6e;
+  margin-bottom: 12px;
+}
+header .search .autocompletes ul {
+
+}
+header .search .autocompletes ul li {
+
+}
+header .search .autocompletes ul li a {
+  display: block;
+  margin: 0 -14px;
+  padding: 10px 0 10px 30px; /* 상 우 하 좌(시계방향) */
+  font-size: 14px;
+  cursor: pointer;
+}
+header .search .autocompletes ul li:hover a {
+  background-color: #f5f5f5;
+  color: #0071e3;
+}
+header.searching ul.menu > li {display: none;}
+header.searching .search-wrap {
+  display: block; /* 검색 중일 때 검색 영역 표시 */
 }
