@@ -27,6 +27,8 @@ const searchStarterEL = headerEL.querySelector('.search-starter');
 const searchCloserEL = searchWrapEL.querySelector('.search-closer');
 const searchShadowEL = searchWrapEL.querySelector('.shadow');
 
+const searchInputEL = searchWrapEL.querySelector('input');
+
 const headerMenuELS = [...headerEL.querySelectorAll('ul.menu > li')]; // 얕은 복사
 const searchDelayELS = [...searchWrapEL.querySelectorAll('li')];
 
@@ -47,6 +49,9 @@ function showSearch () {
   searchDelayELS.forEach(function(el,index){
     el.style.transitionDelay = index * .4 / searchDelayELS.length + 's'; // transition-delay를 length에 따라 설정
   })
+  setTimeout(function (){
+    searchInputEL.focus(); // 600ms 후에 input에 focus
+  },600) // 600ms 후에 실행
 }; 
 function hideSearch () {
   headerEL.classList.remove('searching')
@@ -57,6 +62,8 @@ function hideSearch () {
   searchDelayELS.forEach(function(el,index){
     el.style.transitionDelay = index * .4 / searchDelayELS.length + 's'; // transition-delay를 length에 따라 설정
   })
+  searchDelayELS.reverse()
+  searchInputEL.value = ''; // input의 value를 초기화
 }; 
 
 
