@@ -43,7 +43,9 @@ function showBasket () {basketEL.classList.add('show')};
 function hideBasket () {basketEL.classList.remove('show')}; 
 function showSearch () {
   headerEL.classList.add('searching')
+  document.documentElement.classList.add('fixed')
 }; 
 function hideSearch () {
   headerEL.classList.remove('searching')
+  document.documentElement.classList.remove('fixed')
 }; 
