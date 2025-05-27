@@ -53,13 +53,10 @@ header .basket {
   position: absolute; /* 메뉴가 다른 요소 위에 표시되도록 설정 */
   top: calc(100% + 5px); right: -6px;
 
-  visibility: hidden; /* 기본적으로 보이지 않도록 설정 */
-  transition: .4s;
-  opacity: 0;  
+  display: none; /* 기본적으로 숨김 */
 }
-header .basket.show {
-  visibility: visible; /* show 클래스가 추가되면 보이도록 설정 */
-  opacity: 1;
+header .basket.show{
+  display: block; /* show 클래스가 추가되면 표시 */
 }
 header .basket .arrow {
   width: 20px; height: 10px;
