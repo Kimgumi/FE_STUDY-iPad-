@@ -106,7 +106,9 @@ header .basket ul li a:hover {text-decoration: underline;}
 header .search-wrap {
   position:absolute; top:0; left: 0;
   width: 100%; 
-  display: none;
+  visibility: hidden; /* 기본적으로 보이지 않도록 설정 => 이러면 animation을 줄 수 있음 */
+  opacity: 0; 
+  transition: .4s;
 }
 header .search {
   max-width: 680px;
@@ -178,10 +180,27 @@ header .search .autocompletes ul li:hover a {
   background-color: #f5f5f5;
   color: #0071e3;
 }
+header .search input,
+header .search .search-icon,
+header .search .autocompletes h3,
+header .search .autocompletes li {
+  transition: .6s;
+  transform: translate(100px,0); /* 초기 위치 설정 */
+}
+
 header.searching ul.menu > li {
   opacity: 0; /* display:none 대신하여 사용하며 기존 헤더가 덮어버리기 때문에 문제X */
   transform: scale(.7); 
 }
 header.searching .search-wrap {
-  display: block; /* 검색 중일 때 검색 영역 표시 */
+  visibility: visible; /* searching 클래스가 추가되면 보이도록 설정 */
+  opacity: 1;
+  transition-delay: .2s; /* 헤더가 사라진 후 검색창이 나타나도록 딜레이 설정 */
+}
+header.searching .search input,
+header.searching .search .search-icon,
+header.searching .search .autocompletes h3,
+header.searching .search .autocompletes li {
+  transition-delay: .2s; /* 검색창이 나타날 때 딜레이 설정 */
+  transform: translate(0, 0); /* 검색창이 나타날 때 위치 초기화 */
 }

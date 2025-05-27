@@ -27,7 +27,8 @@ const searchStarterEL = headerEL.querySelector('.search-starter');
 const searchCloserEL = searchWrapEL.querySelector('.search-closer');
 const searchShadowEL = searchWrapEL.querySelector('.shadow');
 
-const headerMenuELS = [...document.querySelectorAll('ul.menu > li')]; // 얕은 복사
+const headerMenuELS = [...headerEL.querySelectorAll('ul.menu > li')]; // 얕은 복사
+const searchDelayELS = [...searchWrapEL.querySelectorAll('li')];
 
 searchStarterEL.addEventListener('click',showSearch);
 searchCloserEL.addEventListener('click',hideSearch); 
@@ -41,12 +42,21 @@ function showSearch () {
   headerEL.classList.add('searching')
   document.documentElement.classList.add('fixed')
   headerMenuELS.reverse().forEach(function(el,index){
-    el.computedStyleMap.transitionDelay = index * .4 / headerMenuELS.length + 's'; // transition-delay를 length에 따라 설정
+    el.style.transitionDelay = index * .4 / headerMenuELS.length + 's'; // transition-delay를 length에 따라 설정
+  })
+  searchDelayELS.forEach(function(el,index){
+    el.style.transitionDelay = index * .4 / searchDelayELS.length + 's'; // transition-delay를 length에 따라 설정
   })
 }; 
 function hideSearch () {
   headerEL.classList.remove('searching')
   document.documentElement.classList.remove('fixed')
+  headerMenuELS.reverse().forEach(function(el,index){
+    el.style.transitionDelay = index * .4 / headerMenuELS.length + 's'; // transition-delay를 length에 따라 설정
+  })
+  searchDelayELS.forEach(function(el,index){
+    el.style.transitionDelay = index * .4 / searchDelayELS.length + 's'; // transition-delay를 length에 따라 설정
+  })
 }; 
 
 
