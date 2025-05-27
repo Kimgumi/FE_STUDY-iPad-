@@ -177,7 +177,10 @@ header .search .autocompletes ul li:hover a {
   background-color: #f5f5f5;
   color: #0071e3;
 }
-header.searching ul.menu > li {display: none;}
+header.searching ul.menu > li {
+  opacity: 0; /* display:none 대신하여 사용하며 기존 헤더가 덮어버리기 때문에 문제X */
+  transform: scale(.7); 
+}
 header.searching .search-wrap {
   display: block; /* 검색 중일 때 검색 영역 표시 */
 }
