@@ -27,15 +27,11 @@ const searchStarterEL = headerEL.querySelector('.search-starter');
 const searchCloserEL = searchWrapEL.querySelector('.search-closer');
 const searchShadowEL = searchWrapEL.querySelector('.shadow');
 
-searchStarterEL.addEventListener('click',function(){
-  showSearch(); // show 클래스를 추가
-})
-searchCloserEL.addEventListener('click',function(){
-  hideSearch(); // show 클래스를 제거
-})
-searchShadowEL.addEventListener('click',function(){
-  hideSearch(); // show 클래스를 제거
-})
+const headerMenuELS = [...document.querySelectorAll('ul.menu > li')]; // 얕은 복사
+
+searchStarterEL.addEventListener('click',showSearch);
+searchCloserEL.addEventListener('click',hideSearch); 
+searchShadowEL.addEventListener('click',hideSearch); 
 
 
 // 추상화 
@@ -44,8 +40,13 @@ function hideBasket () {basketEL.classList.remove('show')};
 function showSearch () {
   headerEL.classList.add('searching')
   document.documentElement.classList.add('fixed')
+  headerMenuELS.reverse().forEach(function(el,index){
+    el.computedStyleMap.transitionDelay = index * .4 / headerMenuELS.length + 's'; // transition-delay를 length에 따라 설정
+  })
 }; 
 function hideSearch () {
   headerEL.classList.remove('searching')
   document.documentElement.classList.remove('fixed')
 }; 
+
+
