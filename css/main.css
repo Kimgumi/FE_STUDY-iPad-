@@ -12,7 +12,11 @@ body {
   color: #1d1d1d; /* 기본 글자색 */
 }
 a {color: #1d1d1d; text-decoration: none; /* 링크 밑줄 제거 */}
-
+img {
+  display: block; /* 이미지 주변의 여백 제거 */
+  user-select: none; /* 이미지 선택 방지 */
+  -webkit-user-drag: none; /* 드래그 방지 */
+}
 /* Btn */
 .btn {
   display: flex;
@@ -34,7 +38,7 @@ a {color: #1d1d1d; text-decoration: none; /* 링크 밑줄 제거 */}
 
 
 /* Header */
-header {background-color: #3a3a3a;}
+header {background-color: #3a3a3a; z-index: 3;}
 header .inner {
   max-width: 1020px;
   margin: 0 auto; /* 가운데 정렬 */
@@ -186,12 +190,6 @@ header .search .autocompletes h3 {
   color: #6e6e6e;
   margin-bottom: 12px;
 }
-header .search .autocompletes ul {
-
-}
-header .search .autocompletes ul li {
-
-}
 header .search .autocompletes ul li a {
   display: block;
   margin: 0 -14px;
@@ -235,6 +233,7 @@ nav {
   border-bottom: 1px solid #d2d2d2;
   position: sticky; /* 스크롤 시 상단에 고정 */
   top: 0; /* 상단에 고정 */
+  z-index: 3;
 }
 nav .inner {
   max-width: 1000px;
@@ -266,44 +265,3 @@ nav .menu li.active a {
   cursor: default; /* 기본 모양 */
 }
 nav .menu li.active:hover a { color: #1d1d1d;}
-
-/* Hero */
-.hero {
-
-}
-.hero .inner {
-
-}
-.hero h1 {
-
-}
-.hero figure {
-
-}
-.hero figure img {
-
-}
-.hero figure figcaption {
-
-}
-.hero figure figcaption .caption-camera {
-
-}
-.hero figure figcaption .caption-chip {
-
-}
-.hero figure figcaption .caption-storage {
-
-}
-.hero h2 {
-
-}
-.hero p.pricing {
-
-}
-.hero p.description {
-
-}
-.hero .links {
-
-}
