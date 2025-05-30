@@ -17,6 +17,14 @@ img {
   user-select: none; /* 이미지 선택 방지 */
   -webkit-user-drag: none; /* 드래그 방지 */
 }
+
+.inner {
+  max-width: 980px; /* 최대 너비 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 0 20px; /* 좌우 패딩 */
+  position: relative;
+}
+
 /* Btn */
 .btn {
   display: flex;
