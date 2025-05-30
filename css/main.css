@@ -49,8 +49,6 @@ img {
 header {background-color: #3a3a3a; z-index: 3;}
 header .inner {
   max-width: 1020px;
-  margin: 0 auto; /* 가운데 정렬 */
-  position: relative; /* 자식 요소의 절대 위치 설정을 위한 기준 */
 }
 header ul.menu {
   height: 44px; /* 메뉴 높이 */
@@ -246,7 +244,6 @@ nav {
 nav .inner {
   max-width: 1000px;
   height: 52px; /* 네비게이션 높이 */
-  margin: 0 auto; /* width 존재 시 가운데 정렬 */
   display: flex; 
   align-items: center; 
 }
