@@ -1,5 +1,18 @@
+html { /* 변수는 재사용시에 사용하는 걸 전제로 한다 */
+  --color-white: #fff; /* 흰색 */
+  --color-black: #000; /* 검은색 */
+  --color-font: #1d1d1d; /* 기본 글자색 */
+  --color-font-darkgray: #6e6e6e; 
+  --color-font-lightgray: #f5f5f5;
+  --color-link: #0071e3;
+  --color-link-focus: #8189f1; /* 포커스 시 테두리 색상 */
+  --color-border: #d2d2d2; /* 테두리 색상 */
+  --color-header: #3a3a3a; /* 헤더 배경색 */
+  --color-section: #f5f5f5; /* 섹션 배경색 */
+  --color-shadow: rgba(0, 0, 0, .4); 
+}
 html.fixed {
-  position: fixed;  /* 스크롤 고정 */
+    /* 스크롤 생성 안됌 */
   overflow-y: scroll; /* 스크롤바 표시 */
   width: 100%; /* 스크롤바가 생겨도 레이아웃이 밀리지 않도록 */
 }
@@ -9,9 +22,9 @@ body {
   line-height: 1;
   font-family: "Roboto", "Noto Sans KR", sans-serif; /* 적용 순서 */
   word-break: keep-all; /* 단어가 오버플로우 시 줄바꿈 처리를 어떻게 할 것인가 */
-  color: #1d1d1d; /* 기본 글자색 */
+  color: var(--color-font); /* 기본 글자색 */
 }
-a {color: #1d1d1d; text-decoration: none; /* 링크 밑줄 제거 */}
+a {color: var(--color-font); text-decoration: none; /* 링크 밑줄 제거 */}
 img {
   display: block; /* 이미지 주변의 여백 제거 */
   user-select: none; /* 이미지 선택 방지 */
@@ -41,12 +54,12 @@ p {
   outline: none; /* 포커스 시 테두리 제거 */
   font-size: 11px;
   line-height: 1; 
-  color: #fff; 
-  background-color: #0071e3;
+  color: var(--color-white); /* 글자색 */
+  background-color: var(--color-link) ; /* 배경색 */
   cursor: pointer; /* 클릭 가능 커서 */
 }
 .btn:hover { opacity: .7;}
-.btn:focus { box-shadow: 0 0 0 2px #8189f1; /* 포커스 시 테두리 효과(x y blur spread) */}
+.btn:focus { box-shadow: 0 0 0 4px var(--color-link-focus); /* 포커스 시 테두리 효과(x y blur spread) */}
 
 /* BACKGROUND IMAGE TEXT */
 .bgtext {
@@ -64,15 +77,21 @@ p {
   gap: 40px;
 }
 a.link {
-  color: #0071e3;
+  color: var(--color-link);
   font-size: 19px;
   line-height: 1.3;
 }
 a.link:hover {text-decoration: underline;}
 a.link::after {content: " >";}
 
+/* Feature */
+.feature {
+  display: flex;
+}
+
 /* Figures */
 .figures {
+  flex-grow: 1;
   position: relative;
 }
 .figures figure,
@@ -83,9 +102,37 @@ a.link::after {content: " >";}
   position: absolute; top: 0; left: 0;
 }
 
+/* Infos */
+.infos {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.infos.infos--center {
+  justify-content: center;
+}
+.infos.infos--end {
+  justify-content: flex-end;
+}
+.info {
+  max-width: 330px;
+  margin-bottom: 24px;
+}
+.info .icon{
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -15px -30px;
+  background-image: url("../images/sprite_apps.png");
+}
+.info p {
+  font-size: 21.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
 
 /* Header */
-header {background-color: #3a3a3a; position: relative; z-index: 9;}
+header {background-color: var(--color-header); position: relative; z-index: 9;}
 header .inner {
   max-width: 1020px;
 }
@@ -104,7 +151,7 @@ header ul.menu > li {
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #f5f5f5;
+  color: var(--color-font-lightgray);
   opacity: .8; /* 투명도 */
 }
 header ul.menu > li.apple-logo > a,
@@ -124,10 +171,10 @@ header ul.menu > li > a:hover {opacity: 1; /* 호버 시 투명도 변경 */}
 header .basket {
   width: 290px;
   padding: 10px 20px;
-  border: 1px solid #d2d2d2;
+  border: 1px solid var(--color-white);
   border-radius: 10px;
   box-sizing: border-box; /* 패딩과 테두리를 포함한 너비 계산 */
-  background-color: #fff;
+  background-color: var(--color-white);
   position: absolute; /* 메뉴가 다른 요소 위에 표시되도록 설정 */
   top: calc(100% + 5px); right: -6px;
   
@@ -150,8 +197,8 @@ header .basket .arrow {
 header .basket .arrow::before {
   content: "";
   width: 12px; height: 20px;
-  background-color: #fff;
-  border: 1px solid #d2d2d2;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
   position: absolute;
   top: 1px; right: -30%;
   transform: rotate(45deg);
@@ -160,16 +207,16 @@ header .basket .arrow::before {
 header .basket .message {
   padding: 30px 0; /* 상하 좌우 */
   font-size: 13px;
-  color: #6e6e6e;
+  color: var(--color-font-darkgray);
   text-align: center;
 }
 header .basket ul { margin-top: 10px;}
-header .basket ul li {border-top: 1px solid #d2d2d2;}
+header .basket ul li {border-top: 1px solid var(--color-border);}
 header .basket ul li a {
   display: block;
   padding: 14px;
   font-size: 13px;
-  color: #0071e3;
+  color: var(--color-link);
 }
 header .basket ul li a:hover {text-decoration: underline;}
 
@@ -190,7 +237,7 @@ header .search {
 header .search .shadow {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, .2); 
+  background-color: var(--color-shadow); 
 }
 header .search .textfield {
   position: relative;
@@ -202,7 +249,7 @@ header .search input {
   box-sizing: border-box;
   background-color: transparent;
   font-size: 17px;  
-  color: #fff;
+  color: var(--color-white);
 }
 header .search .search-icon {
   width: 40px; height: 44px;
@@ -224,7 +271,7 @@ header .search .search-closer {
 header .search .search-closer:hover {opacity: 1;}
 header .search .autocompletes {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 26px 40px 20px; /* 상 좌우 하 */
   border-radius: 0 0 18px 18px;
   box-sizing: border-box;
@@ -232,7 +279,7 @@ header .search .autocompletes {
 }
 header .search .autocompletes h3 {
   font-size: 12px;
-  color: #6e6e6e;
+  color: var(--color-font-darkgray);
   margin-bottom: 12px;
 }
 header .search .autocompletes ul li a {
@@ -243,8 +290,8 @@ header .search .autocompletes ul li a {
   cursor: pointer;
 }
 header .search .autocompletes ul li:hover a {
-  background-color: #f5f5f5;
-  color: #0071e3;
+  background-color: var(--color-section);
+  color: var(--color-link);
 }
 header .search input,
 header .search .search-icon,
@@ -275,7 +322,7 @@ header.searching .search .autocompletes li {
 nav {
   background-color: rgba(255, 255, 255, .7);
   backdrop-filter: blur(20px); /* 배경 흐림 효과 */
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid var(--color-white);
   position: sticky; /* 스크롤 시 상단에 고정 */
   top: 0; /* 상단에 고정 */
   z-index: 3;
@@ -302,10 +349,10 @@ nav .menu li a {
   font-size: 11px;
 }
 nav .menu li:hover a {
-  color: #0071e3;
+  color: var(--color-link);
 }
 nav .menu li.active a {
   opacity: .5; /* 활성화된 메뉴 아이템의 투명도 */
   cursor: default; /* 기본 모양 */
 }
-nav .menu li.active:hover a { color: #1d1d1d;}
+nav .menu li.active:hover a { color: var(--color-font);}
